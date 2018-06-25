@@ -1,0 +1,20 @@
+
+import cv2
+#capに代入
+cap = cv2.VideoCapture(0)
+
+while True:
+ret , frame = cap.read()
+frame = cv2.resize(frame, (int(frame.shape[1]), int(frame.shape[0])))
+cv2.imshow('Raw Frame' , frame)
+
+
+k = cv2.waitKey(1)
+if k == 27:#############escで終了
+break
+
+#destroyの前後にwaitKey(1)を入れないと正常に終わらない
+cap.release()#####カメラをリリース
+cv2.waitKey(1)
+cv2.destroyAllWindows()
+cv2.waitKey(1)
